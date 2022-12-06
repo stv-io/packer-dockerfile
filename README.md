@@ -1,6 +1,6 @@
 # packer-dockerfile
 
-Starting from a public image of packer and adding to it utilities to help image testing
+Starting from a public image of packer and adding to it utilities to help image testing.
 
 - [`packer`](https://www.packer.io/)
 - [`jq`](https://stedolan.github.io/jq/)
