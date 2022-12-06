@@ -39,7 +39,7 @@ jobs:
       - name: Kaniko build
         uses: aevea/action-kaniko@57fd639926c415a2fa4150ac72230eb5758ff48b
         with:
-          image: awscli-kubectl
+          image: packer
           registry: ghcr.io
           password: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.event.pull_request.head.sha }}
@@ -48,7 +48,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/stv-io/TODO:${{ github.event.pull_request.head.sha }}
+      image: ghcr.io/stv-io/packer-dockerfile/packer:${{ github.event.pull_request.head.sha }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
