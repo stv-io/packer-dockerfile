@@ -6,4 +6,4 @@ RUN apk add --no-cache -q curl=7.83.1-r4 jq=1.6-r1 bash=5.1.16-r2 && \
     tar -xvzf packer-provisioner-goss-v3.1.4-linux-amd64.tar.gz && \
     mv packer-provisioner-goss /root/.packer.d/plugins/ && \
     rm -vf README.md LICENSE packer-provisioner-goss-v3.1.4-linux-amd64.tar.gz
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "/bin/packer" ]
