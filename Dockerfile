@@ -1,9 +1,10 @@
-FROM hashicorp/packer:1.8.6
+FROM hashicorp/packer:1.10.2
 LABEL org.opencontainers.image.description packer
-RUN apk add --no-cache -q curl=7.88.1-r1 jq=1.6-r2 bash=5.2.15-r0 && \
+ARG ARCH=
+RUN apk add --no-cache -q curl=8.5.0-r0 jq=1.7.1-r0 bash=5.2.21-r0 && \
     mkdir -p /root/.packer.d/plugins/ && \
-    curl -sLO https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.4/packer-provisioner-goss-v3.1.4-linux-amd64.tar.gz && \
-    tar -xvzf packer-provisioner-goss-v3.1.4-linux-amd64.tar.gz && \
-    mv packer-provisioner-goss /bin/packer-provisioner-goss && \
-    rm -vf README.md LICENSE packer-provisioner-goss-v3.1.4-linux-amd64.tar.gz
+    curl -sLO https://github.com/YaleUniversity/packer-plugin-goss/releases/download/v3.2.8/packer-plugin-goss_v3.2.8_x5.0_linux_${ARCH}.zip && \
+    unzip packer-plugin-goss_v3.2.8_x5.0_linux_${ARCH}.zip && \
+    mv packer-plugin-goss_v3.2.8_x5.0_linux_${ARCH} /bin/packer-provisioner-goss && \
+    rm -vf README.md LICENSE packer-plugin-goss_v3.2.8_x5.0_linux_${ARCH}.zip
 ENTRYPOINT [ "/bin/packer" ]
